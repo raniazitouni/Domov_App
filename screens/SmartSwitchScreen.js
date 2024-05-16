@@ -1,5 +1,5 @@
 import { View, Text, Modal  } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
 import Flat from '../components/Flat2'

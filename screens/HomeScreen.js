@@ -28,7 +28,7 @@ export default function HomeScreen() {
     try {
       const state = await NetInfo.fetch();
       const currentSsid = state.details.ssid;
-      if (currentSsid) {
+      if (state?.isConnected) {
         if (currentSsid === 'Domov') {
           setIsConnected(true);
         } else {
@@ -78,9 +78,9 @@ export default function HomeScreen() {
       }
     };
 
-    fetchLedStates();
-    const intervalId = setInterval(fetchLedStates, 1000); 
-    return () => clearInterval(intervalId); 
+    // fetchLedStates();
+    // const intervalId = setInterval(fetchLedStates, 5000); 
+    // return () => clearInterval(intervalId); 
   }, []);
 
   const handleControlLed = async (device, action) => {
@@ -114,7 +114,7 @@ export default function HomeScreen() {
           {dataList.length > 0 && (
             <Text style={[tw`ml-7 mr-55 text-18px mb-5 border-b pb-1`, { fontFamily: 'Inter-Regular', color: colors.maingrey, borderBottomColor: colors.maingrey }]}>All scenes</Text>
           )}
-          {isConnected ? (
+          {/* {isConnected ? ( */}
             <View style={tw`flex flex-row justify-between`}>
               <View style={[tw`w-[180px]  mr-1 h-164px border-0 p-3 flex-col justify-between rounded-7 `, { backgroundColor: LightState ? colors.maingreen : '#fff' }]}>
                 <View>
@@ -160,11 +160,14 @@ export default function HomeScreen() {
                   </View>
                 </View>
               </View>
+           
+
             </View>
-          ) : (
+          {/* ) : (
             <EmptyList />
-          )}
+          )} */}
         </View>
+        <Text style={[tw` absolute top-170 ml-7 mr-5 text-18px mb-5 pb-1 text-center`, { fontFamily: 'Inter-Regular', color: colors.maingrey, borderBottomColor: colors.maingrey }]}>Make sure that you are connected to Domov's network</Text>
       </View>
     </ScreenWrapper>
   );

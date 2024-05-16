@@ -6,10 +6,11 @@ import { colors } from '../theme/constants';
 import Logo from '../assets/svgs/logo';
 
 const ChangeCredentialsScreen = () => {
-  const [newSsid, setNewSsid] = useState('');
+ 
   const [newPassword, setNewPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  
   const handleUpdateCredentials = async () => {
     try {
       setIsLoading(true);
@@ -20,7 +21,7 @@ const ChangeCredentialsScreen = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ssid: newSsid,
+          
           password: newPassword,
         }),
       });
@@ -68,6 +69,8 @@ const ChangeCredentialsScreen = () => {
     return password.length > 8;
   };
 
+  
+
   return (
     <ScreenWrapper>
       <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
@@ -75,14 +78,14 @@ const ChangeCredentialsScreen = () => {
           <View style={tw `flex items-center m-15`}>
             <Logo/>
           </View>
-          <Text style={[tw`ml-3 text-18px mb-5 mt-7 pb-1`, { fontFamily: 'Inter-Regular', color: colors.maingrey }]}>Change network’s credentials : </Text>
+          <Text style={[tw`ml-3 text-18px mb-5 mt-7 pb-1`, { fontFamily: 'Inter-Regular', color: colors.maingrey }]}>Change network’s credentials: </Text>
           <View style={[tw`m-3`]}>
-            <TextInput
+            {/* <TextInput
               style={styles.input}
               placeholder="New network name"
               onChangeText={(text) => setNewSsid(text)}
               value={newSsid}
-            />
+            /> */}
 
             <TextInput
               style={styles.input}
