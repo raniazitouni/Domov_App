@@ -18,13 +18,22 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "CHANGE_WIFI_STATE",
+        "ACCESS_WIFI_STATE"
+      ]
     },
-    "web": {
-      
-    },
+    "web": {},
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c5f628e5-739f-468d-b055-8ff49bbd50df"
+      }
+    }
   }
 }
