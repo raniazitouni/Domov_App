@@ -3,12 +3,11 @@ import React, { useState, useEffect } from 'react';
 import tw from 'twrnc';
 import { useNavigation } from '@react-navigation/native';
 import ScreenWrapper from '../components/ScreenWrapper';
-import { colors , useCustomFonts} from '../theme/constants.js';
+import { colors } from '../theme/constants.js';
 import Card from '../components/Card.js';
 import Lock from '../assets/svgs/lock.js';
-import EmptyList from '../components/EmptyList';
 import axios from 'axios';
-import NetInfo from '@react-native-community/netinfo';
+
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -19,41 +18,6 @@ export default function HomeScreen() {
     navigation.navigate('AddDeviceScreen');
   };
 
-  //check the wifi 
-
-  const [isConnected, setIsConnected] = useState(false);
-
-  // Fetch current SSID
-  const getCurrentSSID = async () => {
-    try {
-      const state = await NetInfo.fetch();
-      const currentSsid = state.details.ssid;
-      if (state?.isConnected) {
-        if (currentSsid === 'Domov') {
-          setIsConnected(true);
-        } else {
-          setIsConnected(false);
-        }
-      } else {
-        console.log("SSID is undefined, make sure permissions are granted and WiFi is connected");
-        setIsConnected(false);
-      }
-    } catch (error) {
-      console.error("Error fetching SSID: ", error);
-      setIsConnected(false);
-    }
-  };
-
-  useEffect(() => {
-   
-        getCurrentSSID(); // Initial fetch
-        const intervalId = setInterval(getCurrentSSID, 5000); // Fetch every 5 seconds
-        return () => clearInterval(intervalId); // Cleanup interval on unmount
-      }
-
-  , []);
-
-  
   const [LightState, setLightState] = useState(false);
   const [GarageDoorState, setGarageDoorState] = useState(false);
 
